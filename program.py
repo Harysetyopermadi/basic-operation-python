@@ -4,10 +4,10 @@ import pyodbc
 #koneksi
 # Define the connection parameters
 try:
-    server = '192.168.0.41'
-    database = 'REKON_CASH'
-    username = 'hary'
-    password = '1234'
+    server = 'your ip server'
+    database = 'your db'
+    username = 'your username'
+    password = 'your password'
     # Create a connection string
     connection_string = f'DRIVER={{SQL Server}};SERVER={server};DATABASE={database};UID={username};PWD={password}'
     # Establish a connection
@@ -19,7 +19,7 @@ except:
     print("Gagal Koneksi")
     
 #change query to pandas/ table
-df=pd.read_sql("select * from stg_ej_atm",cnxn)
+df=pd.read_sql("your query",cnxn)
 
 #function filter example
 df=df[(df['status']=='Gagal')& (df['narrative']=='Terindikasi Host Stored')]
@@ -46,6 +46,6 @@ df.drop('index',axis=1,inplace=True)
 #df=df['amount'].mean()
 
 #sum with filter
-df=df['amount'][df['atm_id']=='AT802903'].sum()
+#df=df['amount'][df['atm_id']=='AT802903'].sum()
 
 print(df)
